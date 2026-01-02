@@ -1,6 +1,26 @@
 // Blok kode ini mempersiapkan objek untuk suara alarm.
-bel = new Audio('Alarm-ringtone.mp3');
+bel = new Audio('alarm-ringtone.mp3');
 bel.loop = true;
+
+// --- Unlock audio tanpa memainkan suara ---
+let audioUnlocked = false;
+
+function unlockAudio() {
+    if (!audioUnlocked) {
+        bel.play()
+            .then(() => {
+                bel.pause();
+                bel.currentTime = 0;
+                audioUnlocked = true;
+                console.log("Audio context unlocked for alarm.");
+            })
+            .catch(e => console.log("Failed to unlock audio:", e));
+    }
+}
+
+// Aktifkan unlock saat ada interaksi (klik/touch)
+document.addEventListener('click', unlockAudio);
+document.addEventListener('touchstart', unlockAudio, { once: true });
 
 let alarmListArr = [];
 const selectMenu = $('select');
@@ -20,7 +40,7 @@ function updateClock() {
         sec = now.getSeconds(),
         pe = "AM";
 
-// Blok kode ini memastikan format jam yang ditampilkan sesuai dengan format 12 jam.
+    // Blok kode ini memastikan format jam yang ditampilkan sesuai dengan format 12 jam.
     if (hour == 0) {
         hour = 12;
     }
@@ -30,27 +50,35 @@ function updateClock() {
         pe = "PM";
     }
 
-// Fungsi pad ini membantu memformat angka menjadi string dengan jumlah digit tertentu.
+    // Fungsi pad ini membantu memformat angka menjadi string dengan jumlah digit tertentu.
     Number.prototype.pad = function (digits) {
         for (var n = this.toString(); n.length < digits; n = 0 + n);
         return n;
     }
 
-// Blok kode ini menyiapkan data yang nantinya akan digunakan untuk menampilkan tanggal dan waktu pada jam digital.
+    // Blok kode ini menyiapkan data yang nantinya akan digunakan untuk menampilkan tanggal dan waktu pada jam digital.
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    var week = ["Sunday", "Monday", "Tusday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; // Perbaikan typo
     var ids = ["dayName", "month", "dayNum", "year", "hour", "minutes", "seconds", "period"];
     var values = [week[dname], months[mo], dnum.pad(2), yr, hour.pad(2), min.pad(2), sec.pad(2), pe];
 
-// Blok kode ini secara keseluruhan bertugas untuk memperbarui tampilan tanggal dan waktu pada jam digital.  
+    // Blok kode ini secara keseluruhan bertugas untuk memperbarui tampilan tanggal dan waktu pada jam digital.  
     for (var i = 0; i < ids.length; i++) {
         $('#' + ids[i]).text(values[i]);
     }
 
+    // Cek apakah waktunya alarm
     for (let i = 0; i < alarmListArr.length; i++) {
         if (alarmListArr[i] == `${hour.pad(2)}:${min.pad(2)}:${sec.pad(2)} ${pe}`) {
-            ring.load();
-            ring.play();
+            if (audioUnlocked) {
+                bel.play().catch(e => console.log("Alarm play failed:", e));
+            } else {
+                // Jika belum unlock, coba unlock dulu
+                unlockAudio();
+                setTimeout(() => {
+                    if (audioUnlocked) bel.play().catch(e => console.log("Alarm retry failed:", e));
+                }, 100);
+            }
             $('#stopAlarm').css('visibility', 'visible');
         }
     }
@@ -91,7 +119,7 @@ function setAlarm() {
     $('#alarm-h3').text('Alarms');
     let time = `${selectMenu.eq(0).val()}:${selectMenu.eq(1).val()}:${selectMenu.eq(2).val()} ${selectMenu.eq(3).val()}`;
     if (time.includes("setHour") || time.includes("setMinute") || time.includes("setSeconds") || time.includes("AM/PM")) {
-        alert("Please, Select Valide Input");
+        alert("Please, Select Valid Input");
     } else {
         alarmCount++;
         $('.alarmList').append(`
@@ -102,7 +130,6 @@ function setAlarm() {
 
         alarmTime = `${selectMenu.eq(0).val()}:${selectMenu.eq(1).val()}:${selectMenu.eq(2).val()} ${selectMenu.eq(3).val()}`;
         alarmListArr.push(alarmTime);
-        console.log($('.btn-delete').val());
         alert(`Your Alarm Set ${alarmTime}.`);
     }
 }
@@ -115,12 +142,18 @@ function deleteAlarm(click_id) {
     var deleteIndex = alarmListArr.indexOf($('#span' + click_id).text());
     alarmListArr.splice(deleteIndex, 1);
     element.remove();
-    alert(`Your Alarm ${click_id} Delete.`);
+    alert(`Your Alarm ${click_id} Deleted.`);
 }
 
+// Fungsi stop alarm
 function stopAlarm() {
-    ring.pause();
+    bel.pause();
+    bel.currentTime = 0;
     $('#stopAlarm').css('visibility', 'hidden');
 }
 
+// Event listener untuk tombol stop alarm
+$('#stopAlarm').on('click', stopAlarm);
+
+// Jalankan jam
 initClock();

@@ -12,6 +12,7 @@
 `nocturne.alarm` is a minimal, browser-based alarm clock with a cozy bedroom aesthetic inspired by Pokémon's tranquil night scenes. Designed for students, night owls, or anyone who wants their alarm to feel less like a jolt and more like a gentle nudge from a sleepy Squirtle.
 
 Perfect as:
+
 - A frontend practice project 🎓  
 - A personal productivity tool 🕰️  
 - A cute addition to your coding portfolio 💙  
@@ -34,6 +35,7 @@ All code is **handwritten**, **easy to read**, and follows clean coding principl
 ## 🚀 How to Run
 
 1. Clone this repository:
+
    ```bash
    git clone https://github.com/haninhammoud01/nocturne.alarm.git
    cd nocturne.alarm
