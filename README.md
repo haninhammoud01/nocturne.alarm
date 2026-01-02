@@ -39,3 +39,15 @@ All code is **handwritten**, **easy to read**, and follows clean coding principl
    ```bash
    git clone https://github.com/haninhammoud01/nocturne.alarm.git
    cd nocturne.alarm
+
+2. Open the app:
+   - Double-click Alarm Clock.html to open it in your browser, or
+   - Serve it locally (recommended for reliable audio playback):
+     
+   ```
+   bash
+   1 npx serve
+   ```
+   
+   Then open http://localhost:3000 in your browser.
+💡 Some browsers block autoplay or local file audio for security. Using npx serve avoids this issue.
