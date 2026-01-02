@@ -3,7 +3,8 @@
 > A serene, Pokémon-inspired web alarm clock for peaceful mornings and dreamy nights.  
 > Built with pure HTML, CSS, and JavaScript — no frameworks, just calm vibes and clean code.
 
-![Preview](preview.png)  
+![Preview](public/preview.png)
+
 
 ---
 
