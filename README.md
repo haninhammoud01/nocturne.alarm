@@ -45,7 +45,7 @@ All code is **handwritten**, **easy to read**, and follows clean coding principl
    - Serve it locally (recommended for reliable audio playback):
      
    ```
-   1 npx serve
+   npx serve
    ```
    
    Then open http://localhost:3000 in your browser.
