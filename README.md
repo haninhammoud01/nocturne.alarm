@@ -45,7 +45,6 @@ All code is **handwritten**, **easy to read**, and follows clean coding principl
    - Serve it locally (recommended for reliable audio playback):
      
    ```
-   bash
    1 npx serve
    ```
    
