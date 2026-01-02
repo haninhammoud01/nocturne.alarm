@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="icon.png" type="image/vnd.microsoft.icon">
+    <title>Alarm Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="initClock()">
+    <body>
+        <div class="alarm-clock-container">
+            <div class="alarm-clock">
+                                                                 
+    <div class="alarm">
+        <div class="datetime">
+            <div class="date">
+                <div id="alarmclock">ALARM CLOCK</div>
+                <span id="dayName">Day</span>,
+                <span id="dayNum">00</span>
+                <span id="month">Month</span>
+                <span id="year">Year</span>
+            </div>
+            <div class="time">
+                <span id="hour">00</span>:
+                <span id="minutes">00</span>:
+                <span id="seconds">00</span>:
+                <span id="period">AM</span>
+            </div>
+            <button id="stopAlarm" onclick="stopAlarm()">Stop Alarm</button>
+        </div>
+        <hr>
+        <div class="setAlarm">
+            <div class="column">
+                <select id="setHour">
+                    <option value="01"></option>
+                    <!-- Add more options for hours -->
+                    <option value="12"></option>
+                </select>
+            </div>
+            <div class="column">
+                <select id="setMinute">
+                    <option value="00"></option>
+                    <!-- Add more options for minutes -->
+                    <option value="59"></option>
+                </select>
+            </div>
+            <div class="column">
+                <select id="setSeconds">
+                    <option value="00"></option>
+                    <!-- Add more options for seconds -->
+                    <option value="59"></option>
+                </select>
+            </div>
+            <div class="column">
+                <select id="setAMPM">
+                    <option value="AM"></option>
+                    <option value="PM"></option>
+                </select>
+            </div>
+            <button id="btn-setAlarm" type="button">Set Alarm</button>
+        </div>
+        <hr>
+        <h3 id="alarm-h3"></h3>
+        <div class="alarmList"></div>
+    </div>
+</div>
+</div>
+</body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+/* Import Bootstrap CSS */
+@import "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css";
+
+/* Customize Bootstrap with additional styles */
+body {
+  background-image: url('background.gif');
+  background-size: cover;
+}
+
+.alarm-clock-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.alarm {
+  border: 2px solid rgba(0,0,0,0.25);
+  border-radius: 8px;
+  background: #2f363e;
+  box-shadow: 10px 50px 70px rgba(0,0,0,0.25),
+  inset 5px 5px 10px rgba(0,0,0,0.5),
+  inset 5px 5px 20px rgba(255,255,255,0.2),
+  inset -5px -5px 15px rgba(0,0,0,0.75);
+}
+
+.datetime {
+  color: #fff;
+  background: #10101E;
+  font-family: "Segoe UI", sans-serif;
+  padding: 15px 20px;
+  transition: background-color 0.5s;
+}
+
+.datetime:hover {
+  background-color: rgba(0,0,0,0.5);
+}
+
+.date {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.time {
+  font-size: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.time span:not(:last-child) {
+  font-weight: 600;
+  text-align: center;
+}
+
+.time span:last-child {
+  background: #10101E;
+  font-size: 60px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 10px;
+  padding: 0 5px;
+  border-radius: 3px;
+}
+
+hr {
+  border: 2px solid #2f363e;
+  margin: 20px auto;
+}
+
+.setAlarm {
+  display: flex;
+  justify-content: space-around;
+  border-radius: 10px;
+}
+
+.column select {
+  background: #10101E;
+  color: #fff;
+  text-align: center;
+  padding: 8px 4px;
+  border: 2px solid rgba(0,0,0,0.25);
+  border-radius: 18px;
+}
+
+#btn-setAlarm, .btn-delete, #stopAlarm {
+  padding: 5px;
+  color: #fff;
+  background: #10101E;
+  border: 2px solid rgba(0,0,0,0.25);
+  border-radius: 18px;
+}
+
+#stopAlarm {
+  visibility: hidden;
+  width: 100px;
+  margin: 0 34%;
+}
+
+.btn-delete {
+  margin-left: 50px;
+}
+
+#btn-setAlarm:hover, .btn-delete:hover, #stopAlarm:hover {
+  cursor: pointer;
+  background: rgba(255,255,255,0.2);
+  box-shadow: 0 0 30px rgba(255,255,255,0.2);
+}
+
+h3 {
+  color: #fff;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 3%;
+}
+
+.alarmList {
+  color: #fff;
+  margin: 14px auto;
+  text-align: center;
+}
+
+.alarmLog {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6px auto;
+}

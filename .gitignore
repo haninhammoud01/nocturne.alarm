@@ -1,0 +1,35 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / Editor folders
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Browser cache / temp files
+*.log
+*.tmp
+*.bak
+
+# Project-specific ignores
+workspace  # This seems to be a VS Code workspace file — not needed for others
+*.html      # Optional: if you want to ignore HTML files (but usually you want to include them!)
+# Uncomment above line only if you're generating HTML dynamically
+
+# Node modules (if you ever add npm later)
+node_modules/
+
+# Build outputs (if any)
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+
+# Backup files
+*~
+*.backup
