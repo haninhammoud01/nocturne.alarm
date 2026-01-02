@@ -50,4 +50,6 @@ All code is **handwritten**, **easy to read**, and follows clean coding principl
    ```
    
    Then open http://localhost:3000 in your browser.
+
+
 💡 Some browsers block autoplay or local file audio for security. Using npx serve avoids this issue.
